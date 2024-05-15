@@ -1,0 +1,6 @@
+- type: entity
+  name: radio recorder
+  description:
+  parent: BaseItem
+  id: RadioHandheld
+  components:

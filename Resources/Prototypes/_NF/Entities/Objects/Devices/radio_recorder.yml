@@ -2,5 +2,21 @@
   name: radio recorder
   description:
   parent: BaseItem
-  id: RadioHandheld
+  id: RadioRecorder
   components:
+  - type: ContainerContainer
+    containers:
+      key_slots: !type:Container
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyCommon
+  - type: EncryptionKeyHolder
+    keySlots: 1
+  - type: ActivatableUI
+    singleUser: true
+    key: enum.ShipyardConsoleUiKey.Shipyard
+  - type: UserInterface
+    interfaces:
+    - key: enum.ShipyardConsoleUiKey.Shipyard
+      type: ShipyardConsoleBoundUserInterface

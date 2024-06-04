@@ -18,3 +18,22 @@
     - type: BountyContractsCartridge
     - type: AccessReader
       access: [["HeadOfSecurity"], ["HeadOfPersonnel"]]
+
+- type: entity
+  parent: BaseItem
+  id: MarketplaceCartridge
+  name: marketplace cartridge
+  description: A program for buying and selling goods with others on the frontier
+  components:
+    - type: Sprite
+      sprite: Objects/Devices/cartridge.rsi
+      state: cart-s
+    - type: Icon
+      sprite: Objects/Devices/cartridge.rsi
+      state: cart-s
+    - type: UIFragment
+      ui: !type:MarketplaceUi
+    - type: Cartridge
+      programName: marketplace-program-name
+      icon: _NF\Interface\MarketCart.png
+    - type: MarketplaceCartridge

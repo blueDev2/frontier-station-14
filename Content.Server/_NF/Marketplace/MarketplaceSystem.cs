@@ -62,11 +62,13 @@ public sealed partial class MarketplaceSystem : SharedMarketplaceSystem
         marketGoodEntry = null;
         if (TryGetMarketServer(out var marketServer))
         {
-            if (marketServer.MarketGoodsEntries.ContainsKey(entryId))
+            if (marketServer.MarketGoodsEntries.TryGetValue(entryId, out var possibleMarketGoodEntry))
             {
-                marketGoodEntry = marketServer.MarketGoodsEntries[entryId];
+                marketGoodEntry = possibleMarketGoodEntry;
+                return true;
             }
-            return marketGoodEntry is { };
+            marketGoodEntry = null;
+            return false;
         }
         return false;
     }
@@ -79,11 +81,13 @@ public sealed partial class MarketplaceSystem : SharedMarketplaceSystem
         marketServiceEntry = null;
         if (TryGetMarketServer(out var marketServer))
         {
-            if (marketServer.MarketServiceEntries.ContainsKey(entryId))
+            if (marketServer.MarketServiceEntries.TryGetValue(entryId, out var possibleMarketServiceEntry))
             {
-                marketServiceEntry = marketServer.MarketServiceEntries[entryId];
+                marketServiceEntry = possibleMarketServiceEntry;
+                return true;
             }
-            return marketServiceEntry is { };
+            marketServiceEntry = null;
+            return false;
         }
         return false;
     }
@@ -164,12 +168,7 @@ public sealed partial class MarketplaceSystem : SharedMarketplaceSystem
     {
         if (TryGetMarketServer(out var marketServer))
         {
-            if (!marketServer.MarketGoodsEntries.ContainsKey(entryId) || marketServer.MarketGoodsEntries[entryId] is null)
-            {
-                return false;
-            }
-            marketServer.MarketGoodsEntries[entryId] = null;
-            return true;
+            return marketServer.MarketGoodsEntries.Remove(entryId);
         }
         return false;
     }
@@ -178,12 +177,7 @@ public sealed partial class MarketplaceSystem : SharedMarketplaceSystem
     {
         if (TryGetMarketServer(out var marketServer))
         {
-            if (marketServer.MarketServiceEntries.ContainsKey(entryId) || marketServer.MarketServiceEntries[entryId] is null)
-            {
-                return false;
-            }
-            marketServer.MarketServiceEntries[entryId] = null;
-            return true;
+            return marketServer.MarketServiceEntries.Remove(entryId);
         }
         return false;
     }

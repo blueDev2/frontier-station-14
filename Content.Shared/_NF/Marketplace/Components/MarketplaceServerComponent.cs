@@ -9,11 +9,11 @@ public sealed partial class MarketplaceServerComponent : Component
     ///     All open Service Marketplace Entries by their id.
     /// </summary>
     [DataField("marketServiceEntries")]
-    public Dictionary<int, MarketServiceEntry?> MarketServiceEntries = new();
+    public Dictionary<int, MarketServiceEntry> MarketServiceEntries = new();
 
     /// <summary>
     ///     All open Goods Marketplace Entries by their id.
     /// </summary>
     [DataField("marketGoodsEntries")]
-    public Dictionary<int, MarketGoodEntry?> MarketGoodsEntries = new();
+    public Dictionary<int, MarketGoodEntry> MarketGoodsEntries = new();
 }

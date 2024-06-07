@@ -14,8 +14,8 @@ namespace Content.Server._NF.Marketplace;
 public sealed partial class MarketplaceSystem : SharedMarketplaceSystem
 {
     private const int MaxAttempts = 10;
-    private EntityManager _entityManager = default!;
-    private RobustRandom _robustRandom = default!;
+    [Dependency] private readonly EntityManager _entityManager = default!;
+    [Dependency] private readonly IRobustRandom _robustRandom = default!;
     public override void Initialize()
     {
         base.Initialize();

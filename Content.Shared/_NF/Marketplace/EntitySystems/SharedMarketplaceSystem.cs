@@ -4,21 +4,20 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared._NF.Marketplace.EntitySystems;
 
-[Serializable, NetSerializable]
 public enum MarketAgentType : byte
 {
     Buyer,
     Seller
 }
 
-[Serializable, NetSerializable]
+
 public enum MarketEntryType : byte
 {
     Good,
     Service
 }
 
-[Serializable, NetSerializable]
+
 public enum MarketGoodEntryCategory : byte
 {
     FoodsAndDrinks,
@@ -29,7 +28,7 @@ public enum MarketGoodEntryCategory : byte
     Misc
 }
 
-[Serializable, NetSerializable]
+
 public enum MarketServiceEntryCategory : byte
 {
     Employment,
@@ -38,7 +37,7 @@ public enum MarketServiceEntryCategory : byte
     Misc
 }
 
-public struct Agent
+public sealed class Agent
 {
     public MarketAgentType AgentType;
     public string Name;
@@ -49,8 +48,7 @@ public struct Agent
     }
 }
 
-[Serializable, NetSerializable]
-public struct MarketGoodEntry
+public sealed class MarketGoodEntry
 {
     /// <summary>
     /// A buyer or seller of goods
@@ -99,8 +97,7 @@ public struct MarketGoodEntry
     }
 }
 
-[Serializable, NetSerializable]
-public struct MarketServiceEntry
+public sealed class MarketServiceEntry
 {
     /// <summary>
     /// A buyer or seller of a service

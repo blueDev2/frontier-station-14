@@ -95,7 +95,7 @@ public sealed partial class MarketplaceSystem : SharedMarketplaceSystem
     public bool TryCreateMarketGoodEntry(
     Agent agent,
     [NotNullWhen(true)] out int? newId,
-    List<EntityPrototype> goods,
+    List<string> goods,
     string associatedVessel = "",
     int price = 0,
     string description = "",

@@ -4,20 +4,21 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared._NF.Marketplace.EntitySystems;
 
+[NetSerializable, Serializable]
 public enum MarketAgentType : byte
 {
     Buyer,
     Seller
 }
 
-
+[NetSerializable, Serializable]
 public enum MarketEntryType : byte
 {
     Good,
     Service
 }
 
-
+[NetSerializable, Serializable]
 public enum MarketGoodEntryCategory : byte
 {
     FoodsAndDrinks,
@@ -28,7 +29,7 @@ public enum MarketGoodEntryCategory : byte
     Misc
 }
 
-
+[NetSerializable, Serializable]
 public enum MarketServiceEntryCategory : byte
 {
     Employment,
@@ -36,7 +37,7 @@ public enum MarketServiceEntryCategory : byte
     Janitorial,
     Misc
 }
-
+[NetSerializable, Serializable]
 public sealed class Agent
 {
     public MarketAgentType AgentType;
@@ -48,6 +49,7 @@ public sealed class Agent
     }
 }
 
+[NetSerializable, Serializable] // Prototype list fields do not work with this
 public sealed class MarketGoodEntry
 {
     /// <summary>
@@ -78,14 +80,14 @@ public sealed class MarketGoodEntry
     /// <summary>
     /// The goods listed for the entry
     /// </summary>
-    public List<EntityPrototype> Goods;
+    public List<string> Goods;
 
     /// <summary>
     /// How many of these goods sets are remaining available for sale or being requested
     /// </summary>
     public int Quantity;
 
-    public MarketGoodEntry(Agent agent, string associatedVessel, int price, string description, int quantity, List<MarketGoodEntryCategory> goodsCategories, List<EntityPrototype> goods)
+    public MarketGoodEntry(Agent agent, string associatedVessel, int price, string description, int quantity, List<MarketGoodEntryCategory> goodsCategories, List<string> goods)
     {
         Agent = agent;
         Price = price;
@@ -97,6 +99,7 @@ public sealed class MarketGoodEntry
     }
 }
 
+[NetSerializable, Serializable]
 public sealed class MarketServiceEntry
 {
     /// <summary>
